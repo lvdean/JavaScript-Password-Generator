@@ -41,44 +41,51 @@ function generatePassword() {
   if (lowerCaseChar===false && 
     upperCaseChar=== false && 
     numberChar ===false && 
-    special===false ){
+    special===false )
+    // (!upperCaseChar && !lowerCaseChar && !numberChar && !special)
+    {
     alert("You must choose at least one type of character. Please start over.");
-    return "";
+    return null;
   }
 
   let userChoice = "";
-  let createPassword = "";
-
-  userChoice += upperCaseChar ? charupperCaseAbc : "";
-  userChoice += lowerCaseChar ? charlowerCaseAbc : "";
-  userChoice += numberChar ? numeric : "";
-  userChoice += special ? charSpecial : "";
+ 
+  userChoice = charSelection(userChoice, upperCaseChar, lowerCaseChar, numberChar, special);
   
-  console.log (userChoice)
+  // if (upperCaseChar) {
+  //   userChoice += charupperCaseAbc;
+  // }
+  // if (lowerCaseChar) {
+  //   userChoice += charlowerCaseAbc;
+  // }
+  // if (numberChar) {
+  //   userChoice += numeric;
+  // }
+  // if (special) {
+  //   userChoice += charSpecial;
+  // }
 
+  
+  let createPassword = "";
   for ( let i= 0; i < passwordLength; i++) {
-    var randomChar = Math.floor(Math.random() * userChoice. passwordLength);
-     createPassword+= userChoice [randomChar];
+     createPassword+= userChoice [(Math.floor(Math.random() * userChoice.length))];
   }
-
+return createPassword
 
 
 }
 
 
-  // var userChoice = {
-  //   upperCaseChar: upperCaseChar,
-  //   lowerCaseChar: lowerCaseChar,
-  //   numberChar: numberChar,
-  //     special: special
-  // }
+function charSelection(userChoice, upperCaseChar, lowerCaseChar, numberChar, special) {
+  userChoice += upperCaseChar ? charupperCaseAbc : "";
+  userChoice += lowerCaseChar ? charlowerCaseAbc : "";
+  userChoice += numberChar ? numeric : "";
+  userChoice += special ? charSpecial : "";
+  return userChoice;
+}
+
+
     
-
-// //for example purpose
-// // var results = [];
-// // if(lowerCaseChar === true) {
-// //   results.push(charlowercase)
-
 
 // // function arrayFromLowToHigh (low,high){
 // //   const array =[]
@@ -92,18 +99,6 @@ function generatePassword() {
 
   
   
-//   //else if (){};
-
-   
-
-//   //lowerCaseChar=true
-
-
- 
-//    //else if ()
-// //   return results.join('')
-// }
-
 // // Write password to the #password input
 // //a password is generated that matches the selected criteria
 // //the password is either displayed in an alert or written to the page
